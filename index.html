@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodExpress - Online Food Ordering System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            🍴 Food<span>Express</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="login-btn" onclick="openLogin()">Login</button>
+            <button class="cart-btn" onclick="openCart()">
+                🛒 Cart <span id="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+
+    <div class="hero-content">
+        <p class="small-title">WELCOME TO FOOD EXPRESS</p>
+
+        <h1>
+            Delicious Food<br>
+            <span>Delivered Fast</span>
+        </h1>
+
+        <p>
+            Order your favourite meals from the best restaurants
+            and enjoy fresh food delivered directly to your doorstep.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#menu" class="primary-btn">Order Now 🍕</a>
+            <a href="#about" class="secondary-btn">Learn More</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <div class="food-circle">
+            🍕
+        </div>
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features">
+
+    <div class="feature-card">
+        <div class="feature-icon">🚴</div>
+        <h3>Fast Delivery</h3>
+        <p>Get your food delivered quickly and safely.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🍽️</div>
+        <h3>Fresh Food</h3>
+        <p>Fresh and delicious meals prepared with care.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">💳</div>
+        <h3>Easy Payment</h3>
+        <p>Simple and convenient payment options.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>Best Quality</h3>
+        <p>Quality food from trusted restaurants.</p>
+    </div>
+
+</section>
+
+
+<!-- MENU SECTION -->
+<section id="menu" class="menu-section">
+
+    <div class="section-heading">
+        <p>OUR MENU</p>
+        <h2>Popular Food Items</h2>
+        <span>Choose from our delicious selection</span>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search for food..."
+            onkeyup="searchFood()"
+        >
+    </div>
+
+    <!-- CATEGORY BUTTONS -->
+    <div class="categories">
+        <button onclick="filterFood('all')" class="category active">All</button>
+        <button onclick="filterFood('pizza')" class="category">Pizza</button>
+        <button onclick="filterFood('burger')" class="category">Burgers</button>
+        <button onclick="filterFood('indian')" class="category">Indian</button>
+        <button onclick="filterFood('chinese')" class="category">Chinese</button>
+        <button onclick="filterFood('dessert')" class="category">Desserts</button>
+    </div>
+
+
+    <!-- FOOD ITEMS -->
+    <div class="food-container" id="foodContainer">
+
+        <div class="food-card" data-category="pizza" data-name="Margherita Pizza">
+            <div class="food-image">🍕</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.8</span>
+                <h3>Margherita Pizza</h3>
+                <p>Fresh tomatoes, mozzarella & basil</p>
+                <div class="food-bottom">
+                    <strong>₹249</strong>
+                    <button onclick="addToCart('Margherita Pizza',249,'🍕')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="pizza" data-name="Farmhouse Pizza">
+            <div class="food-image">🍕</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.7</span>
+                <h3>Farmhouse Pizza</h3>
+                <p>Onion, capsicum, tomato & mushrooms</p>
+                <div class="food-bottom">
+                    <strong>₹349</strong>
+                    <button onclick="addToCart('Farmhouse Pizza',349,'🍕')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="burger" data-name="Classic Burger">
+            <div class="food-image">🍔</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.6</span>
+                <h3>Classic Burger</h3>
+                <p>Cheese, lettuce, tomato & special sauce</p>
+                <div class="food-bottom">
+                    <strong>₹179</strong>
+                    <button onclick="addToCart('Classic Burger',179,'🍔')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="burger" data-name="Cheese Burger">
+            <div class="food-image">🍔</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.9</span>
+                <h3>Cheese Burger</h3>
+                <p>Double cheese, crispy patty & sauce</p>
+                <div class="food-bottom">
+                    <strong>₹229</strong>
+                    <button onclick="addToCart('Cheese Burger',229,'🍔')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="indian" data-name="Paneer Tikka">
+            <div class="food-image">🥘</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.8</span>
+                <h3>Paneer Tikka</h3>
+                <p>Grilled cottage cheese with Indian spices</p>
+                <div class="food-bottom">
+                    <strong>₹279</strong>
+                    <button onclick="addToCart('Paneer Tikka',279,'🥘')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="indian" data-name="Chole Bhature">
+            <div class="food-image">🍛</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.7</span>
+                <h3>Chole Bhature</h3>
+                <p>Spicy chickpeas served with fluffy bhature</p>
+                <div class="food-bottom">
+                    <strong>₹159</strong>
+                    <button onclick="addToCart('Chole Bhature',159,'🍛')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="chinese" data-name="Veg Noodles">
+            <div class="food-image">🍜</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.5</span>
+                <h3>Veg Noodles</h3>
+                <p>Stir-fried noodles with fresh vegetables</p>
+                <div class="food-bottom">
+                    <strong>₹189</strong>
+                    <button onclick="addToCart('Veg Noodles',189,'🍜')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="chinese" data-name="Veg Manchurian">
+            <div class="food-image">🥢</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.6</span>
+                <h3>Veg Manchurian</h3>
+                <p>Crispy vegetable balls in spicy sauce</p>
+                <div class="food-bottom">
+                    <strong>₹199</strong>
+                    <button onclick="addToCart('Veg Manchurian',199,'🥢')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="dessert" data-name="Chocolate Cake">
+            <div class="food-image">🍰</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.9</span>
+                <h3>Chocolate Cake</h3>
+                <p>Soft chocolate cake with creamy frosting</p>
+                <div class="food-bottom">
+                    <strong>₹149</strong>
+                    <button onclick="addToCart('Chocolate Cake',149,'🍰')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="food-card" data-category="dessert" data-name="Ice Cream">
+            <div class="food-image">🍨</div>
+            <div class="food-info">
+                <span class="rating">⭐ 4.8</span>
+                <h3>Ice Cream</h3>
+                <p>Rich and creamy vanilla ice cream</p>
+                <div class="food-bottom">
+                    <strong>₹99</strong>
+                    <button onclick="addToCart('Ice Cream',99,'🍨')">
+                        Add +
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+
+    <div class="about-content">
+        <p class="section-label">ABOUT US</p>
+        <h2>Making Food Ordering Simple & Convenient</h2>
+
+        <p>
+            FoodExpress is an online food ordering system designed to
+            provide customers with a simple, fast and convenient way
+            to order food from restaurants.
+        </p>
+
+        <p>
+            Our system allows customers to browse food items, search
+            for their favourite meals, add products to their cart and
+            place orders online.
+        </p>
+
+        <div class="about-points">
+            <div>✓ Easy food search</div>
+            <div>✓ Simple ordering process</div>
+            <div>✓ Secure payment interface</div>
+            <div>✓ Fast delivery tracking</div>
+        </div>
+    </div>
+
+    <div class="about-box">
+        <div class="big-emoji">🍽️</div>
+        <h3>Fresh. Fast. Delicious.</h3>
+        <p>Your favourite food is just a few clicks away.</p>
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+
+    <div class="section-heading">
+        <p>GET IN TOUCH</p>
+        <h2>Contact Us</h2>
+    </div>
+
+    <form class="contact-form" onsubmit="submitContact(event)">
+
+        <input type="text" placeholder="Your Name" required>
+
+        <input type="email" placeholder="Your Email" required>
+
+        <input type="text" placeholder="Subject" required>
+
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+
+        <button type="submit" class="primary-btn">
+            Send Message
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-logo">
+        🍴 Food<span>Express</span>
+    </div>
+
+    <p>
+        Online Food Ordering System
+    </p>
+
+    <p>
+        © 2026 FoodExpress. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+
+    <div class="modal-content">
+
+        <button class="close-btn" onclick="closeLogin()">×</button>
+
+        <h2>Welcome Back 👋</h2>
+        <p>Login to continue ordering.</p>
+
+        <form onsubmit="loginUser(event)">
+
+            <input type="email" placeholder="Email Address" required>
+
+            <input type="password" placeholder="Password" required>
+
+            <button class="primary-btn" type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p class="signup-text">
+            New user? <span onclick="showSignup()">Create an account</span>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+
+    <div class="modal-content">
+
+        <button class="close-btn" onclick="closeSignup()">×</button>
+
+        <h2>Create Account 🧑‍🍳</h2>
+
+        <form onsubmit="signupUser(event)">
+
+            <input type="text" placeholder="Full Name" required>
+
+            <input type="email" placeholder="Email Address" required>
+
+            <input type="password" placeholder="Create Password" required>
+
+            <button class="primary-btn" type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <p class="signup-text">
+            Already have an account?
+            <span onclick="showLogin()">Login</span>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- CART MODAL -->
+<div class="modal" id="cartModal">
+
+    <div class="cart-content">
+
+        <button class="close-btn" onclick="closeCart()">×</button>
+
+        <h2>🛒 Your Cart</h2>
+
+        <div id="cartItems">
+            <p class="empty-cart">Your cart is empty.</p>
+        </div>
+
+        <div class="cart-summary">
+
+            <div>
+                <span>Subtotal</span>
+                <strong id="subtotal">₹0</strong>
+            </div>
+
+            <div>
+                <span>Delivery</span>
+                <strong id="delivery">₹40</strong>
+            </div>
+
+            <div class="total">
+                <span>Total</span>
+                <strong id="total">₹0</strong>
+            </div>
+
+        </div>
+
+        <button class="primary-btn checkout-btn" onclick="checkout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
